@@ -27,6 +27,12 @@ export function initFiltering(elements, indexes) {
         }
 
         // #4.5 — отфильтровать данные используя компаратор
-        return data.filter(row => compare(row, state));
+        const target = {
+            date: state.date,
+            customer: state.customer,
+            seller: state.seller,
+            total: [state.totalFrom, state.totalTo] // диапазон для правила arrayAsRange
+        };
+        return data.filter(row => compare(row, target));
     }
 }
